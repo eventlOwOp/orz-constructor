@@ -4,5 +4,5 @@ const path = require("path");
 module.exports = async (req, res) => {
 	const fp0 = path.join(process.cwd(), "api", "index.html");
 
-	return res.send(await fs.readFile(fp0));
+	return res.send(String(await fs.readFile(fp0)));
 };
