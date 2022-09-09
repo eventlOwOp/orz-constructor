@@ -2,9 +2,11 @@ const fs = require("fs").promises;
 const GIFEncoder = require("gifencoder");
 const iconv = require("iconv-lite");
 const UPNG = require("./UPNG");
+const path = require("path");
 
 async function getImg(text, size) {
-	fd = await fs.open(`./HZK${size}`);
+	const fp = path.join(process.cwd(), "api", `HZK${size}`);
+	fd = await fs.open(fp);
 	function printBitmap(x) {
 		for (let i = 0; i < size; ++i) {
 			s = "";
