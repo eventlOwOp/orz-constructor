@@ -1,0 +1,16 @@
+{
+  "name": "pic-generate",
+  "version": "1.0.0",
+  "description": "QnQ",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gifencoder": "^2.0.1",
+    "iconv-lite": "^0.6.3",
+    "pako": "^2.0.4"
+  }
+}
