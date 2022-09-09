@@ -3,6 +3,7 @@ const GIFEncoder = require("gifencoder");
 const iconv = require("iconv-lite");
 const UPNG = require("./UPNG");
 const path = require("path");
+const { createCanvas, createImageData } = require("canvas");
 
 async function getImg(text, size) {
 	const fp = path.join(process.cwd(), "api", `HZK${size}`);
@@ -50,8 +51,6 @@ async function getImg(text, size) {
 	const mh = h * size;
 
 	const encoder = new GIFEncoder(mw, mh);
-
-	const { createCanvas, createImageData } = require("canvas");
 
 	encoder.start();
 	encoder.setRepeat(0);
