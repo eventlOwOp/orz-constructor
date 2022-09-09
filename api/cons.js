@@ -40,7 +40,8 @@ async function getImg(text, size) {
 
 	// for (let u of bitmaps) printBitmap(u);
 
-	let img = UPNG.decode(await fs.readFile("./0.png"));
+	const fp = path.join(process.cwd(), "api", `0.png`);
+	let img = UPNG.decode(await fs.readFile(fp));
 	const h = img.height;
 	const w = img.width;
 	let frs = UPNG.toRGBA8(img);
