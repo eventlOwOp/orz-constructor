@@ -1,12 +1,9 @@
 {
-  "name": "pic-generate",
+  "name": "orz-constructor",
   "version": "1.0.0",
-  "description": "QnQ",
-  "main": "1.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "description": "",
+  "scripts": {},
+  "keywords": [],
   "license": "MIT",
   "dependencies": {
     "gifencoder": "^2.0.1",
