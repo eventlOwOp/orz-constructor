@@ -1,5 +1,5 @@
 const fs = require("fs").promises;
-const GIFEncoder = require("GIFEncoder");
+const GIFEncoder = require("gifencoder");
 const iconv = require("iconv-lite");
 const UPNG = require("./UPNG");
 
