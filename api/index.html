@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>生成orz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="text">文字</label>
+            <input type="text" class="form-control" placeholder="QwQ" id="text">
+        </div>
+        <label>字体大小</label>
+        <div class="radio">
+            <label><input type="radio" name="sz" checked value="16">16</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="sz" value="32">32</label>
+        </div>
+        <button class="btn btn-primary" id="submit">生成</button>
+        <hr />
+        <img id="img" style="display: none;"></img><br />
+        <a id="dwsrc"><button class="btn btn-primary" id="dw" disabled>下载</button></a>
+    </div>
+    <script>
+        $("#submit").click(() => {
+            sz = $("input[name='sz']:checked").val();
+            let txt = $("#text").val();
+            if (!txt) {
+                swal("Oops", "请输入文字", "error")
+                return;
+            }
+            $("#img").show();
+            $("#img").attr('src', `/cons?text=${txt}&sz=${sz}`);
+            $("#dw").removeAttr("disabled");
+            $("#dwsrc").attr("href", `/cons?text=${txt}&sz=${sz}`);
+        })
+    </script>
+</body>
+
+</html>

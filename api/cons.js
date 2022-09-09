@@ -104,9 +104,8 @@ async function getImg(text, size) {
 module.exports = async (req, res) => {
 	const { text, size } = req.query;
 
-	return res.send(
-		await getImg(text, size),
-		{ "Content-Type": "image/gif" },
-		200
-	);
+	res.setHeader("Content-Type", `image/gif`);
+	res.setHeader("Content-Disposition", `attachment; filename=orz.gif`);
+
+	return res.send(await getImg(text, size));
 };
