@@ -9,6 +9,10 @@
     {
       "src": "/cons",
       "dest": "/api/cons.js"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ],
   "regions": [
