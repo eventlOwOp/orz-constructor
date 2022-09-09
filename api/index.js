@@ -3,6 +3,7 @@ const path = require("path");
 
 module.exports = async (req, res) => {
 	const fp0 = path.join(process.cwd(), "api", "index.html");
-
-	return res.send(String(await fs.readFile(fp0)));
+	const x = String(await fs.readFile(fp0));
+	console.log(x);
+	res.send(x);
 };
