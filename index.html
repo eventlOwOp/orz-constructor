@@ -87,7 +87,7 @@
                 return;
             }
 
-            let src = `/cons?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}&background=${encodeURIComponent(bg)}`;
+            let src = `/generate?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}&background=${encodeURIComponent(bg)}`;
             $("#img").show().attr('src', src);
             $("#downloadsrc").attr("href", src);
             $("#download").removeAttr("disabled");

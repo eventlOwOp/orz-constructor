@@ -1,4 +1,4 @@
-const { generate } = require("../lib/construct");
+const { generate } = require("../lib/generate");
 const fs = require("fs/promises");
 
 (async () => {
