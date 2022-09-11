@@ -6,6 +6,9 @@ const fs = require("fs/promises");
 		"test/test.gif",
 		await generate("我太菜了", 16, {
 			type: "gif",
+			transparent: false,
+			background: "#ffffff",
+			pattern: "0.png",
 		})
 	);
 	fs.writeFile(

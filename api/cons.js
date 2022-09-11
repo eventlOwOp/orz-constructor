@@ -10,12 +10,27 @@ module.exports = async (req, res) => {
 	res.setHeader("Content-Type", `image/${type}`);
 	res.setHeader("Content-Disposition", `attachment; filename=orz.gif`);
 
+	console.log({
+		pattern: `${pattern}.png`,
+		type,
+		transparent,
+		background,
+	});
+
+	// return res.send(
+	// 	await generate(text, size, {
+	// 		pattern: `${pattern}.png`,
+	// 		type,
+	// 		transparent,
+	// 		background,
+	// 	})
+	// );
 	return res.send(
-		await generate(text, size, {
-			pattern: `${pattern}.png`,
-			type,
-			transparent,
-			background,
+		await generate("我太菜了", 16, {
+			type: "gif",
+			transparent: false,
+			background: "#ffffff",
+			pattern: "0.png",
 		})
 	);
 };
