@@ -13,7 +13,7 @@ const fs = require("fs/promises");
 	);
 	fs.writeFile(
 		"test/test.png",
-		await generate("awsl", 16, {
+		await generate("Orz", 16, {
 			type: "png",
 			transparent: true,
 			pattern: "1.png",
