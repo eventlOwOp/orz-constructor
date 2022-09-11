@@ -1,7 +1,3 @@
-process.env.LD_LIBRARY_PATH = `/var/task/node_modules/canvas/build/Release:${
-	process.env.LD_LIBRARY_PATH || ""
-}`;
-
 const fs = require("fs").promises;
 const GIFEncoder = require("gifencoder");
 const iconv = require("iconv-lite");
