@@ -8,6 +8,6 @@
   "dependencies": {
     "gifencoder": "^2.0.1",
     "iconv-lite": "^0.6.3",
-    "pako": "^2.0.4"
+    "upng-js": "^2.1.0"
   }
 }
