@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>生成orz</title>
+    <title>Orz 生成器</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -10,43 +10,87 @@
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/0.png">
 </head>
 
 <body>
     <div class="jumbotron text-center">
-        <h1>生成Orz</h1>
+        <h1>Orz 生成器</h1>
     </div>
     <div class="container">
-        <div class="form-group">
-            <label for="text">文字</label>
-            <input type="text" class="form-control" placeholder="在这里输入" id="text">
+        <div class="row">
+            <div class="col-sm-8" style="padding-bottom: 40px;">
+                <h2>生成</h2>
+                <hr />
+                <div class="form-group">
+                    <label for="text">文字</label>
+                    <input type="text" class="form-control" placeholder="在这里输入" name="text">
+                    <label>字体大小</label>
+                    <div>
+                        <label><input type="radio" name="sz" checked value="16">16</label>
+                        <label><input type="radio" name="sz" value="32">32</label>
+                    </div>
+                    <label>文件格式</label>
+                    <div>
+                        <label><input type="radio" name="type" checked value="gif">GIF</label>
+                        <label><input type="radio" name="type" value="png">PNG</label>
+                    </div>
+                    <label>是否透明</label>
+                    <div>
+                        <label><input type="radio" name="transparent" checked value="0">不透明</label>
+                        <label><input type="radio" name="transparent" value="1">透明</label>
+                    </div>
+                    <label>图案</label>
+                    <div id="pattern-list">
+                    </div>
+                    <label>背景颜色</label>
+                    <input type="text" class="form-control" value="#ffffff" id="text">
+                </div>
+                <hr />
+                <button class="btn btn-primary" id="submit">生成</button>
+                <hr />
+                <img id="img" style="display: none; width: 100%"></img><br />
+                <a id="downloadsrc"><button class="btn btn-primary" id="download" disabled download>下载</button></a>
+            </div>
+            <div class="col-sm-4" style="padding-bottom: 40px;">
+                <h3>帮助</h3>
+                <p>1. GIF 格式的透明是假的, 透明不是一个通道而是一种颜色, 所以在透明时也需要设置一个背景颜色来处理 Alpha 通道为中间值的颜色</p>
+                <p>2. PNG 格式的透明是真的, 但是 GIF 格式支持范围比 APNG 广, 比如 QQ 发送 APNG 必须选择从文件中打开</p>
+            </div>
         </div>
-        <label>字体大小</label>
-        <div class="radio">
-            <label><input type="radio" name="sz" checked value="16">16</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="sz" value="32">32</label>
-        </div>
-        <button class="btn btn-primary" id="submit">生成</button>
-        <hr />
-        <img id="img" style="display: none; width: 100%"></img><br />
-        <a id="dwsrc"><button class="btn btn-primary" id="dw" disabled>下载</button></a>
     </div>
+    <style>
+        .pattern-item {
+            margin-right: 10px;
+        }
+    </style>
     <script>
+        const pattern_sum = 19;
+        for (let i = 0; i <= 19; ++i)
+            $("#pattern-list").append($(`<label class="pattern-item"><input type="radio" name="pattern" value="${i}"><img src="/assets/${i}.png" /></label>`));
+        $("input[name=pattern][value=0]").attr('checked', true);
         $("#submit").click(() => {
-            sz = $("input[name='sz']:checked").val();
-            let txt = $("#text").val();
+            let sz = $("input[name=sz]:checked").val();
+            let type = $("input[name=type]:checked").val();
+            let transparent = $("input[name=transparent]:checked").val();
+            let pattern = $("input[name=pattern]:checked").val();
+            let txt = $("input[name='text']").val();
+
             if (!txt) {
                 swal("Oops", "请输入文字", "error")
                 return;
             }
-            $("#img").show();
-            $("#img").attr('src', `/cons?text=${txt}&size=${sz}`);
-            $("#dw").removeAttr("disabled");
-            $("#dwsrc").attr("href", `/cons?text=${txt}&size=${sz}`);
+
+            let src = `/cons?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}`;
+            $("#img").show().attr('src', src);
+            $("#downloadsrc").attr("href", src);
+            $("#download").removeAttr("disabled");
         })
     </script>
+
+    <div class="jumbotron text-center" style="margin-bottom: 0; height: 100px">
+        <p>您吊打我 <img src="/assets/0.png" /></p>
+    </div>
 </body>
 
 </html>
