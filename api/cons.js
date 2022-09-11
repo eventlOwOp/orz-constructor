@@ -1,7 +1,7 @@
 const { generate } = require("../lib/construct");
 
 module.exports = async (req, res) => {
-	const { text, size, pattern, type, transparent, background } = req.query;
+	let { text, size, pattern, type, transparent, background } = req.query;
 
 	if (!text) return res.status(400);
 
