@@ -12,5 +12,8 @@
   "regions": [
     "hkg1"
   ],
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "env": {
+    "LD_LIBRARY_PATH": "/var/task/node_modules/canvas/build/Release"
+  }
 }
