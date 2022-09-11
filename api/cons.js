@@ -8,22 +8,14 @@ module.exports = async (req, res) => {
 	if (type !== "png" && type !== "gif") res.status(400);
 
 	transparent = parseInt(transparent);
+	pattern = pattern + ".png";
 
 	res.setHeader("Content-Type", `image/${type}`);
 	res.setHeader("Content-Disposition", `attachment; filename=orz.gif`);
 
-	console.log({
-		text,
-		size,
-		pattern: `${pattern}.png`,
-		type,
-		transparent,
-		background,
-	});
-
 	return res.send(
 		await generate(text, size, {
-			pattern: `${pattern}.png`,
+			pattern,
 			type,
 			transparent,
 			background,
