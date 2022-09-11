@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 	pattern = pattern + ".png";
 
 	res.setHeader("Content-Type", `image/${type}`);
-	res.setHeader("Content-Disposition", `attachment; filename=orz.gif`);
+	res.setHeader("Content-Disposition", `attachment; filename=orz.${type}`);
 
 	return res.send(
 		await generate(text, size, {
