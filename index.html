@@ -44,7 +44,7 @@
                     <div id="pattern-list">
                     </div>
                     <label>背景颜色</label>
-                    <input type="text" class="form-control" value="#ffffff" id="text">
+                    <input type="text" class="form-control" value="#ffffff" name="bg">
                 </div>
                 <hr />
                 <button class="btn btn-primary" id="submit">生成</button>
@@ -69,19 +69,21 @@
         for (let i = 0; i <= 19; ++i)
             $("#pattern-list").append($(`<label class="pattern-item"><input type="radio" name="pattern" value="${i}"><img src="/assets/${i}.png" /></label>`));
         $("input[name=pattern][value=0]").attr('checked', true);
+
         $("#submit").click(() => {
             let sz = $("input[name=sz]:checked").val();
             let type = $("input[name=type]:checked").val();
             let transparent = $("input[name=transparent]:checked").val();
             let pattern = $("input[name=pattern]:checked").val();
-            let txt = $("input[name='text']").val();
+            let txt = $("input[name=text]").val();
+            let bg = $("input[name=bg]").val();
 
             if (!txt) {
                 swal("Oops", "请输入文字", "error")
                 return;
             }
 
-            let src = `/cons?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}`;
+            let src = `/cons?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}&background=${bg}`;
             $("#img").show().attr('src', src);
             $("#downloadsrc").attr("href", src);
             $("#download").removeAttr("disabled");
