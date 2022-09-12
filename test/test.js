@@ -4,11 +4,12 @@ const fs = require("fs/promises");
 (async () => {
 	fs.writeFile(
 		"test/test.gif",
-		await generate("我太菜了", 16, {
+		await generate("我太菜了", 32, {
 			type: "gif",
 			transparent: false,
 			background: "#ffffff",
 			pattern: "0.png",
+			font: "simsun",
 		})
 	);
 	fs.writeFile(
