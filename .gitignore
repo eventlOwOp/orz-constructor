@@ -1,5 +1,5 @@
 node_modules/
-tools/
+otf2bdf/
 
 package-lock.json
 yarn.lock
