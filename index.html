@@ -25,10 +25,15 @@
                 <div class="form-group">
                     <label for="text">文字</label>
                     <input type="text" class="form-control" placeholder="在这里输入" name="text">
+                    <label>字体</label>
+                    <div>
+                        <label><input type="radio" name="font" checked value="msyh">微软雅黑</label>
+                        <label><input type="radio" name="font" value="simsun">宋体</label>
+                    </div>
                     <label>字体大小</label>
                     <div>
-                        <label><input type="radio" name="sz" checked value="16">16</label>
-                        <label><input type="radio" name="sz" value="32">32</label>
+                        <label><input type="radio" name="size" checked value="16">16</label>
+                        <label><input type="radio" name="size" value="32">32</label>
                     </div>
                     <label>文件格式</label>
                     <div>
@@ -61,6 +66,7 @@
                 <p>4. <del>目前只支持中文字符, HZK 点阵字体, 要支持 bdf 格式, 正在写</del> 用的微软雅黑的 bdf 字体, otf2bdf 转的,
                     <code>size=16/32 resolution=72</code> 但是好丑啊
                 </p>
+                <p>5. 现在支持宋体了, 但是宋体的英文比微软雅黑丑, 中文要好看一点</p>
             </div>
         </div>
     </div>
@@ -76,7 +82,8 @@
         $("input[name=pattern][value=0]").attr('checked', true);
 
         $("#submit").click(() => {
-            let sz = $("input[name=sz]:checked").val();
+            let font = $("input[name=font]:checked").val();
+            let size = $("input[name=size]:checked").val();
             let type = $("input[name=type]:checked").val();
             let transparent = $("input[name=transparent]:checked").val();
             let pattern = $("input[name=pattern]:checked").val();
@@ -88,7 +95,7 @@
                 return;
             }
 
-            let src = `/generate?text=${txt}&size=${sz}&type=${type}&transparent=${transparent}&pattern=${pattern}&background=${encodeURIComponent(bg)}`;
+            let src = `/generate?text=${txt}&size=${size}&type=${type}&transparent=${transparent}&pattern=${pattern}&background=${encodeURIComponent(bg)}&font=${font}`;
             $("#img").show().attr('src', src);
             $("#downloadsrc").attr("href", src);
             $("#download").removeAttr("disabled");
