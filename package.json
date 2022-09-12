@@ -8,7 +8,6 @@
   "dependencies": {
     "bdfparser": "^2.2.5",
     "gifencoder": "^2.0.1",
-    "iconv-lite": "^0.6.3",
     "readlineiter": "^1.0.1",
     "upng-js": "^2.1.0"
   }
