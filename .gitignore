@@ -3,3 +3,6 @@ tools/
 
 package-lock.json
 yarn.lock
+
+test/*.png
+test/*.gif
